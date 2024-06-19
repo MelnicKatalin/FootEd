@@ -1,20 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 
-
-public partial class Drills : System.Web.UI.Page
+namespace FootEd
 {
-    protected void Page_Load(object sender, EventArgs e)
+    public partial class Drills : System.Web.UI.Page
     {
-        if (!IsPostBack)
+        protected void Page_Load(object sender, EventArgs e)
         {
-            LoadDrills();
+            if (!IsPostBack)
+            {
+                LoadDrills();
+            }
         }
-    }
 
-    private void LoadDrills()
-    {
-        var drills = new List<Drill>
+        private void LoadDrills()
+        {
+            var drills = new List<Drill>
         {
             new Drill { Id = 1, Name = "Passing Drill", ImageUrl = "images/passing_drill.jpg" },
             new Drill { Id = 2, Name = "Shooting Drill", ImageUrl = "images/shooting_drill.jpg" },
@@ -26,14 +27,15 @@ public partial class Drills : System.Web.UI.Page
             new Drill { Id = 8, Name = "Set Piece Drill", ImageUrl = "images/set_piece_drill.jpg" }
         };
 
-        drillsRepeater.DataSource = drills;
-        drillsRepeater.DataBind();
+            drillsRepeater.DataSource = drills;
+            drillsRepeater.DataBind();
+        }
     }
-}
 
-public class Drill
-{
-    public int Id { get; set; }
-    public string Name { get; set; }
-    public string ImageUrl { get; set; }
+    public class Drill
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string ImageUrl { get; set; }
+    }
 }

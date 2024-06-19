@@ -18,67 +18,20 @@
 
     <%--jquery--%>
     <script src="bootstrap/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <%--popper js--%>
     <script src="bootstrap/js/popper.min.js"></script>
     <%--bootstrap js--%>
     <script src="bootstrap/js/bootstrap.min.js"></script>
 
+    <script async src="./chat-widget.js"></script>
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 
-    <style>
-        .chat-container {
-            position: fixed;
-            bottom: 0;
-            right: 0;
-            width: 300px;
-            max-height: 400px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            background-color: white;
-        }
-
-        .chat-header {
-            background-color: #007bff;
-            color: #fff;
-            padding: 10px;
-            text-align: center;
-        }
-
-        .chat-messages {
-            flex: 1;
-            padding: 10px;
-            overflow-y: auto;
-            border-top: 1px solid #ccc;
-        }
-
-        .chat-input {
-            display: flex;
-            border-top: 1px solid #ccc;
-        }
-
-            .chat-input input {
-                flex: 1;
-                padding: 10px;
-                border: none;
-                border-radius: 0;
-            }
-
-            .chat-input button {
-                padding: 10px;
-                background-color: #007bff;
-                color: #fff;
-                border: none;
-                cursor: pointer;
-            }
-    </style>
-
 </head>
 <body>
+
     <form id="form1" runat="server">
         <div>
             <nav class="navbar navbar-expand-lg navbar-light">
@@ -129,6 +82,7 @@
         </div>
         <!-- Main Content Placeholder -->
 
+
         <!-- Footer -->
         <footer>
             <div id="footer1" class="container-fluid">
@@ -152,18 +106,21 @@
         </footer>
         <!-- ./Footer -->
     </form>
-    <script type="text/javascript">
-        (function () {
-            var scriptElement = document.createElement('script');
-            scriptElement.type = 'text/javascript';
-            scriptElement.async = false;
-            scriptElement.src = '/ChatBotService.asmx?Get=Script';
-            (document.getElementsByTagName('head')[0] ||
-                document.getElementsByTagName('body')[0]).appendChild(scriptElement);
-        })();
+
+
+    
+    <%--<script>
+        window.embeddedChatbotConfig = {
+            chatbotId: "Qva-sOKg9i6miFCv4LSNx",
+            domain: "www.chatbase.co"
+        }
     </script>
-
-
+    <script
+    src="https://www.chatbase.co/embed.min.js"
+    chatbotId="Qva-sOKg9i6miFCv4LSNx"
+    domain="www.chatbase.co"
+    defer>
+    </script>--%>
 
 </body>
 </html>

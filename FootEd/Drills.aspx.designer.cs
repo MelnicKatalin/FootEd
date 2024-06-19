@@ -6,8 +6,10 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
-public partial class Drills
+namespace FootEd
 {
-    protected global::System.Web.UI.WebControls.Repeater drillsRepeater;
+    public partial class Drills
+    {
+        protected global::System.Web.UI.WebControls.Repeater drillsRepeater;
+    }
 }
