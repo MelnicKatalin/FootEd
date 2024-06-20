@@ -41,7 +41,7 @@ namespace FootEd
                 {
                     con.Open();
                 }
-                SqlCommand cmd = new SqlCommand("SELECT * from member_master_tbl where user_id='" + TextBox8.Text.Trim() + "';", con);
+                SqlCommand cmd = new SqlCommand("SELECT * from member_master_tbl where user_id='" + TextBox1.Text.Trim() + "';", con);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
