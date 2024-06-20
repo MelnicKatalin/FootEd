@@ -12,49 +12,50 @@ namespace FootEd
 {
     public partial class userlogin : System.Web.UI.Page
     {
-        //private string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
-        //protected void Load_Page(object sender, EventArgs e)
-        //{
 
-        //}
+        string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+        protected void Page_Load(object sender, EventArgs e)
+        {
 
-        //// login button click event
-        //protected void Click_Button1(object sender, EventArgs e)
-        //{
-        //    try
-        //    {
-        //        SqlConnection con = new SqlConnection();
-        //        if (con.State == ConnectionState.Closed)
-        //        {
-        //            con.Open();
+        }
 
-        //        }
-        //        SqlCommand cmd = new SqlCommand("select * from admin_table where username='" + TextBox1.Text.Trim() + "' AND password='" + TextBox2.Text.Trim() + "'", con);
-        //        SqlDataReader dr = cmd.ExecuteReader();
-        //        if (dr.HasRows)
-        //        {
-        //            while (dr.Read())
-        //            {
-        //                Response.Write("<script>alert('Successful login');</script>");
-        //                Session["username"] = dr.GetValue(0).ToString();
-        //                Session["fullname"] = dr.GetValue(2).ToString();
-        //                Session["role"] = "admin";
-        //                //Session["status"] = dr.GetValue(10).ToString();
-        //            }
-        //            Response.Redirect("homepage.aspx");
-        //        }
-        //        else
-        //        {
-        //            Response.Write("<script>alert('Invalid credentials');</script>");
-        //        }
+        // user login
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(strcon);
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Response.Write("<script>alert('" + ex.Message + "');</script>");
-        //    }
-        //}
+                }
+                SqlCommand cmd = new SqlCommand("select * from member_master_tbl where user_id='" + TextBox1.Text.Trim() + "' AND password='" + TextBox2.Text.Trim() + "'", con);
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        Response.Write("<script>alert('Successful login');</script>");
+                        Session["username"] = dr.GetValue(0).ToString();
+                        Session["fullname"] = dr.GetValue(8).ToString();
+                        Session["role"] = "user";
+                        Session["status"] = dr.GetValue(9).ToString();
+                    }
 
+                    Response.Redirect("homepage.aspx");
 
+                }
+                else
+                {
+                    Response.Write("<script>alert('Invalid credentials');</script>");
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
     }
 }
