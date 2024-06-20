@@ -7,18 +7,29 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h1>Football Forum</h1>
-    <asp:GridView ID="gvPosts" runat="server" AutoGenerateColumns="False" DataKeyNames="PostId" >
-        <Columns>
-            <asp:BoundField DataField="Title" HeaderText="Title" />
-            <asp:BoundField DataField="Author" HeaderText="Author" />
-            <asp:BoundField DataField="Date" HeaderText="Date" />
-            <asp:ButtonField Text="View" CommandName="Select" />
-        </Columns>
-    </asp:GridView>
-
-    <h2>Create a new post</h2>
-    <asp:TextBox ID="txtTitle" runat="server" Placeholder="Title"></asp:TextBox><br />
-    <asp:TextBox ID="txtContent" runat="server" TextMode="MultiLine" Rows="5" Placeholder="Content"></asp:TextBox><br />
-    <asp:Button ID="btnSubmit" runat="server" Text="Submit"  />
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Create a New Post</h2>
+                <div class="form-group">
+                    <asp:TextBox ID="txtTitle" runat="server" CssClass="form-control" Placeholder="Title"></asp:TextBox>
+                </div>
+                <div class="form-group">
+                    <asp:TextBox ID="txtContent" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="5" Placeholder="Content"></asp:TextBox>
+                </div>
+                <asp:Button ID="btnSubmit" runat="server" CssClass="btn btn-primary" Text="Submit"  />
+            </div>
+            <div class="col-md-8">
+                
+                <asp:GridView ID="gvPosts" runat="server" CssClass="table table-striped" AutoGenerateColumns="False" DataKeyNames="PostId">
+                    <Columns>
+                        <asp:BoundField DataField="Title" HeaderText="Title" />
+                        <asp:BoundField DataField="Author" HeaderText="Author" />
+                        <asp:BoundField DataField="Date" HeaderText="Date" DataFormatString="{0:dd/MM/yyyy}" />
+                        <asp:ButtonField Text="View" CommandName="Select"  buttontype="button" />
+                    </Columns>
+                </asp:GridView>
+            </div>
+        </div>
+    </div>
 </asp:Content>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace FootEd
 {
-    public partial class Drills : System.Web.UI.Page
+    public partial class drills : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

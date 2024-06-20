@@ -41,7 +41,7 @@ namespace FootEd
                 {
                     con.Open();
                 }
-                SqlCommand cmd = new SqlCommand("SELECT * from member_master_table where member_id='" + TextBox8.Text.Trim() + "';", con);
+                SqlCommand cmd = new SqlCommand("SELECT * from member_master_tbl where user_id='" + TextBox8.Text.Trim() + "';", con);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
@@ -70,15 +70,16 @@ namespace FootEd
                 {
                     con.Open();
                 }
-                SqlCommand cmd = new SqlCommand("INSERT INTO member_master_table(full_name,dob,contact_no,email,state,city,pincode,full_address,member_id,password,account_status) values(@full_name,@dob,@contact_no,@email,@state,@city,@pincode,@full_address,@member_id,@password,@account_status)", con);
+                SqlCommand cmd = new SqlCommand("INSERT INTO member_master_tbl(full_name,dob,contact_no,email,country,city,pincode,user_id,password,account_status) values(@full_name,@dob,@contact_no,@email,@country,@city,@pincode,@user_id,@password,@account_status)", con);
                 cmd.Parameters.AddWithValue("@full_name", TextBox1.Text.Trim());
+                cmd.Parameters.AddWithValue("@dob", TextBox2.Text.Trim());
                 cmd.Parameters.AddWithValue("@contact_no", TextBox3.Text.Trim());
                 cmd.Parameters.AddWithValue("@email", TextBox4.Text.Trim());
-                cmd.Parameters.AddWithValue("@state", DropDownList1.SelectedItem.Value);
+                cmd.Parameters.AddWithValue("@country", DropDownList1.SelectedItem.Value);
                 cmd.Parameters.AddWithValue("@city", TextBox6.Text.Trim());
-                cmd.Parameters.AddWithValue("@full_address", TextBox5.Text.Trim());
-                cmd.Parameters.AddWithValue("@member_id", TextBox8.Text.Trim());
-                cmd.Parameters.AddWithValue("@password", TextBox2.Text.Trim());
+                cmd.Parameters.AddWithValue("@pincode", TextBox7.Text.Trim());
+                cmd.Parameters.AddWithValue("@user_id", TextBox8.Text.Trim());
+                cmd.Parameters.AddWithValue("@password", TextBox9.Text.Trim());
                 cmd.Parameters.AddWithValue("@account_status", "pending");
                 cmd.ExecuteNonQuery();
                 con.Close();

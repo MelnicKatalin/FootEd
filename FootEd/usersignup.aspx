@@ -61,6 +61,7 @@
                                 <div class="form-group">
                                     <asp:DropDownList class="form-control" ID="DropDownList1" runat="server">
                                         <asp:ListItem Text="Select" Value="select" />
+                                        <asp:ListItem Text="Romania" Value="Romania" /> 
 
                                     </asp:DropDownList>
                                 </div>

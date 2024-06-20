@@ -8,7 +8,7 @@
 //------------------------------------------------------------------------------
 namespace FootEd
 {
-    public partial class Drills
+    public partial class drills
     {
         protected global::System.Web.UI.WebControls.Repeater drillsRepeater;
     }

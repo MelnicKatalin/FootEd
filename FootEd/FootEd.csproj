@@ -182,12 +182,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="admindrills.aspx" />
     <Content Include="adminlogin.aspx" />
+    <Content Include="adminmembermanagement.aspx" />
     <Content Include="bootstrap\css\bootstrap.min.css" />
     <Content Include="bootstrap\js\bootstrap.min.js" />
     <Content Include="bootstrap\js\jquery-3.3.1.slim.min.js" />
     <Content Include="bootstrap\js\popper.min.js" />
-    <Content Include="chat-widget.js" />
+    <Content Include="chat-bot.js" />
     <Content Include="css\customstylesheet.css" />
     <Content Include="css\general.css" />
     <Content Include="css\index.css" />
@@ -2236,6 +2238,7 @@
     <Content Include="forum.aspx" />
     <Content Include="homepage.aspx" />
     <Content Include="imgs\adminuser.png" />
+    <Content Include="imgs\football.png" />
     <Content Include="imgs\generaluser.png" />
     <Content Include="imgs\homeimage2.jpg" />
     <Content Include="imgs\FootEd.png" />
@@ -2247,12 +2250,26 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="admindrills.aspx.cs">
+      <DependentUpon>admindrills.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admindrills.aspx.designer.cs">
+      <DependentUpon>admindrills.aspx</DependentUpon>
+    </Compile>
     <Compile Include="adminlogin.aspx.cs">
       <DependentUpon>adminlogin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="adminlogin.aspx.designer.cs">
       <DependentUpon>adminlogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="adminmembermanagement.aspx.cs">
+      <DependentUpon>adminmembermanagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="adminmembermanagement.aspx.designer.cs">
+      <DependentUpon>adminmembermanagement.aspx</DependentUpon>
     </Compile>
     <Compile Include="drilldetails.aspx.cs">
       <DependentUpon>drilldetails.aspx</DependentUpon>
@@ -2340,9 +2357,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="js\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

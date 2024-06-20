@@ -19,14 +19,15 @@ namespace FootEd
             Response.Redirect("adminlogin.aspx");
         }
 
-         
-         
+        protected void LinkButton8_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("admindrills.aspx");
+        }
 
-         
-
-         
-
-         
+        protected void LinkButton10_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("adminmembermanagement.aspx");
+        }
 
         protected void LinkButton4_Click(object sender, EventArgs e)
         {

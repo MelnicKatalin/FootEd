@@ -15,15 +15,6 @@ namespace FootEd
     {
 
         /// <summary>
-        /// gvPosts control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvPosts;
-
-        /// <summary>
         /// txtTitle control.
         /// </summary>
         /// <remarks>
@@ -49,5 +40,14 @@ namespace FootEd
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSubmit;
+
+        /// <summary>
+        /// gvPosts control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvPosts;
     }
 }

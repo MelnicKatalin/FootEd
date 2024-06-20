@@ -6,11 +6,13 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
-public partial class DrillDetails
+namespace FootEd
 {
-    protected global::System.Web.UI.WebControls.Literal drillName;
-    protected global::System.Web.UI.WebControls.Image drillImage;
-    protected global::System.Web.UI.WebControls.Literal drillDescription;
-    protected global::System.Web.UI.WebControls.Literal drillDuration;
+    public partial class drilldetails
+    {
+        protected global::System.Web.UI.WebControls.Literal drillName;
+        protected global::System.Web.UI.WebControls.Image drillImage;
+        protected global::System.Web.UI.WebControls.Literal drillDescription;
+        protected global::System.Web.UI.WebControls.Literal drillDuration;
+    }
 }
