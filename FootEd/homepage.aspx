@@ -11,31 +11,31 @@
             <div class="row">
                 <div class="col-12">
                     <center>
-                        <h2>Line</h2>
-                        <p><b>Line 2</b></p>
+                        <h2>Our Features</h2>
+                        <p><b>The 3 primary features</b></p>
                     </center>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-4">
                     <center>
-                        <img width="150px" />
-                        <h4>Line 3</h4>
-                        <p class="text-justify">Something here</p>
+                        <img width="150px" src="imgs/cone.png" />
+                        <h4>Drills Catalogue</h4>
+                        <p class="text-justify"></p>
                     </center>
                 </div>
                 <div class="col-md-4">
                     <center>
-                        <img width="150px" src=" " />
-                        <h4>Line 4</h4>
-                        <p class="text-justify">Something here</p>
+                        <img width="150px" src="imgs/glass.png" />
+                        <h4>Search Drills</h4>
+                        <p class="text-justify"></p>
                     </center>
                 </div>
                 <div class="col-md-4">
                     <center>
-                        <img width="150px" src=" " />
-                        <h4>Line 5</h4>
-                        <p class="text-justify">Something here</p>
+                        <img width="150px" src="imgs/forum.png " />
+                        <h4>Browse the forum</h4>
+                        <p class="text-justify"></p>
                     </center>
                 </div>
             </div>
@@ -50,31 +50,31 @@
 
                 <div class="col-12">
                     <center>
-                        <h2>Something here</h2>
-                        <p><b>Line 6</b></p>
+                        <h2>The process</h2>
+                        <p><b>A simple 3 step process</b></p>
                     </center>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-4">
                     <center>
-                        <img width="150px" src=" " />
+                        <img width="150px" src="imgs/sign-up.png" />
                         <h4>Sign Up</h4>
-                        <p class="text-justify">Something here</p>
+                        <p class="text-justify"></p>
                     </center>
                 </div>
                 <div class="col-md-4">
                     <center>
-                        <img width="150px" src=" " />
+                        <img width="150px" src="imgs/glass.png" />
                         <h4>Search Drills</h4>
-                        <p class="text-justify">Something here</p>
+                        <p class="text-justify"></p>
                     </center>
                 </div>
                 <div class="col-md-4">
                     <center>
-                        <img width="150px" src=" " />
+                        <img width="150px" src="imgs/football.png" />
                         <h4>Visit Us</h4>
-                        <p class="text-justify">Something here</p>
+                        <p class="text-justify"></p>
                     </center>
                 </div>
             </div>

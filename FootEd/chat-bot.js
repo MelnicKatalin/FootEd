@@ -63,7 +63,6 @@
           <input type="text" id="chat-input" class="flex-1 border border-gray-300 rounded-md px-4 py-2 outline-none w-3/4" placeholder="Type your message...">
           <button id="chat-submit" class="bg-gray-800 text-white rounded-md px-4 py-2 cursor-pointer">Send</button>
         </div>
-        
       </div>
     </div>
   `;
@@ -77,7 +76,6 @@
     const closePopup = document.getElementById('close-popup');
 
     chatSubmit.addEventListener('click', function () {
-
         const message = chatInput.value.trim();
         if (!message) return;
 
@@ -86,7 +84,6 @@
         chatInput.value = '';
 
         onUserRequest(message);
-
     });
 
     chatInput.addEventListener('keyup', function (event) {
@@ -111,10 +108,7 @@
         }
     }
 
-    function onUserRequest(message) {
-        // Handle user request here
-        console.log('User request:', message);
-
+    async function onUserRequest(message) {
         // Display user message
         const messageElement = document.createElement('div');
         messageElement.className = 'flex justify-end mb-3';
@@ -128,10 +122,37 @@
 
         chatInput.value = '';
 
-        // Reply to the user
-        setTimeout(function () {
-            reply('Hello! This is a sample reply.');
-        }, 1000);
+        // Send user message to ChatGPT API
+        try {
+            const replyMessage = await fetchChatGPTResponse(message);
+            reply(replyMessage);
+        } catch (error) {
+            console.error('Error fetching ChatGPT response:', error);
+            reply('Sorry, something went wrong. Please try again later.');
+        }
+    }
+
+    async function fetchChatGPTResponse(userMessage) {
+        const apiKey = 'sk-proj-SxUlXIuhpbE9crGP66kPT3BlbkFJNLY7Wt1GupyCEZqAYeup'; // Replace with your OpenAI API key
+        const response = await fetch('https://api.openai.com/v1/chat/completions', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${apiKey}`
+            },
+            body: JSON.stringify({
+                model: "gpt-3.5-turbo",
+                messages: [{ role: "user", content: userMessage }]
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const data = await response.json();
+        console.log('API response data:', data); // Log the response for debugging
+        return data.choices[0].message.content;
     }
 
     function reply(message) {

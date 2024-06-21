@@ -42,12 +42,12 @@ namespace FootEd
         protected global::System.Web.UI.WebControls.Button btnSubmit;
 
         /// <summary>
-        /// gvPosts control.
+        /// rptPosts control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvPosts;
+        protected global::System.Web.UI.WebControls.Repeater rptPosts;
     }
 }
