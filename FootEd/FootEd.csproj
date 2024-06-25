@@ -226,6 +226,7 @@
     <Content Include="datatables\css\jquery.dataTables.min.css" />
     <Content Include="datatables\js\jquery.dataTables.min.js" />
     <Content Include="drilldetails.aspx" />
+    <Content Include="index.js" />
     <Content Include="viewdrills.aspx" />
     <Content Include="drill_catalogue\cone.png" />
     <Content Include="fontawesome\LICENSE.txt" />

@@ -8,8 +8,8 @@
 //------------------------------------------------------------------------------
 namespace FootEd
 {
-    public partial class drills
+    public partial class viewdrills
     {
-        protected global::System.Web.UI.WebControls.Repeater drillsRepeater;
+        protected global::System.Web.UI.WebControls.GridView GridView1;
     }
 }

@@ -137,8 +137,8 @@ namespace FootEd
                     }
                     types = types.Remove(types.Length - 1);
 
-                    string filepath = "~/drill_catalogue/cone";
-                    string filepath2 = "~/drills_catalogoue/cone";
+                    string filepath = "~/drill_catalogue/";
+                    string filepath2 = "~/drills_catalogoue/";
                     string filename = Path.GetFileName(PhotoUpload.PostedFile.FileName);
                     string filename2 = Path.GetFileName(VideoUpload.PostedFile.FileName);
                     if (filename == "" || filename == null)
@@ -270,12 +270,12 @@ namespace FootEd
                 // types = Attacking, Defending,
                 types = types.Remove(types.Length - 1);
 
-                string filepath = "~/drill_catalogue/cone.png";
+                string filepath = "~/drill_catalogue/";
                 string filename = Path.GetFileName(PhotoUpload.PostedFile.FileName);
                 PhotoUpload.SaveAs(Server.MapPath("drill_catalogue/" + filename));
                 filepath = "~/drill_catalogue/" + filename;
 
-                string filepath2 = "~/drill_catalogue/cone.png";;
+                string filepath2 = "~/drill_catalogue/";;
                 string filename2 = Path.GetFileName(VideoUpload.PostedFile.FileName);
                 VideoUpload.SaveAs(Server.MapPath("" + filename2));
                 filepath2 = "~/drill_catalogue/" + filename2;

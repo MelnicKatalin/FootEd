@@ -63,6 +63,9 @@
                                <div class="col-lg-2">
                                    <asp:Image class="img-fluid" ID="Image1" runat="server" ImageUrl='<%# Eval("drill_img_link") %>' />
                                </div>
+                               <div class="input-group">
+                                   <asp:LinkButton class="btn btn-primary" ID="LinkButton1" runat="server" Text="More Details" CommandArgument='<%# Eval("drill_id") %>' OnClick="LinkButton1_Click"><i class="fas fa-check-circle"></i></asp:LinkButton>
+                               </div>
                            </div>
                        </div>
                    </ItemTemplate>

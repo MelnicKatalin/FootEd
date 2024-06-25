@@ -26,6 +26,6 @@
         <div class="form-group">
             <asp:TextBox ID="txtCommentContent" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="3" Placeholder="Your comment"></asp:TextBox>
         </div>
-        <asp:Button ID="btnSubmitComment" runat="server" CssClass="btn btn-primary" Text="Submit" OnClick="btnSubmitComment_Click" />
+        <asp:Button ID="btnSubmitComment" runat="server" CssClass="btn btn-primary" Text="Submit"  />
     </div>
 </asp:Content>
