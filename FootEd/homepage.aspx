@@ -19,7 +19,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <center>
-                        <img width="150px" src="imgs/cone.png" />
+                        <img width="150px" src="imgs/cone.png" /><a href="homepage.aspx"></a>
                         <h4>Drills Catalogue</h4>
                         <p class="text-justify"></p>
                     </center>

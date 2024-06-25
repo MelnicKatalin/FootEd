@@ -15,12 +15,9 @@ namespace FootEd
     {
         string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
         static string global_filepath;
-        static int global_actual_stock, global_current_stock, global_issued_books;
-
+        
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-
             GridView1.DataBind();
         }
 
@@ -34,7 +31,7 @@ namespace FootEd
         // update button click
         protected void Button3_Click(object sender, EventArgs e)
         {
-            //updateDrillByID();
+            updateDrillByID();
         }
         // delete button click
         protected void Button2_Click(object sender, EventArgs e)
@@ -107,7 +104,7 @@ namespace FootEd
 
                     cmd.ExecuteNonQuery();
                     con.Close();
-                    Response.Write("<script>alert('Member Deleted Successfully');</script>");
+                    Response.Write("<script>alert('Drill Deleted Successfully');</script>");
                     clearForm();
                     GridView1.DataBind();
 
@@ -117,6 +114,77 @@ namespace FootEd
                     Response.Write("<script>alert('" + ex.Message + "');</script>");
                 }
 
+            }
+            else
+            {
+                Response.Write("<script>alert('Invalid Drill ID');</script>");
+            }
+        }
+
+        void updateDrillByID()
+        {
+
+            if (checkIfDrillExists())
+            {
+                try
+                {
+
+
+                    string types = "";
+                    foreach (int i in ListBox1.GetSelectedIndices())
+                    {
+                        types = types + ListBox1.Items[i] + ",";
+                    }
+                    types = types.Remove(types.Length - 1);
+
+                    string filepath = "~/drill_catalogue/cone";
+                    string filepath2 = "~/drills_catalogoue/cone";
+                    string filename = Path.GetFileName(PhotoUpload.PostedFile.FileName);
+                    string filename2 = Path.GetFileName(VideoUpload.PostedFile.FileName);
+                    if (filename == "" || filename == null)
+                    {
+                        filepath = global_filepath;
+                    }
+                    if (filename2 == "" || filename2 == null)
+                    {
+                        filepath2 = global_filepath;
+                    }
+                    else
+                    {
+                        PhotoUpload.SaveAs(Server.MapPath("drill_catalogue/" + filename));
+                        filepath = "~/drill_catalogue/" + filename;
+                        VideoUpload.SaveAs(Server.MapPath("drill_catalogue/" + filename2));
+                        filepath2 = "~/drill_catalogue/" + filename2;
+                    }
+
+                    SqlConnection con = new SqlConnection(strcon);
+                    if (con.State == ConnectionState.Closed)
+                    {
+                        con.Open();
+                    }
+                    SqlCommand cmd = new SqlCommand("UPDATE Drill_master_tbl set drill_name=@drill_name, type=@type, explanation=@explanation, organization=@organization, coaching_points=@coaching_points, variations=@variations, drill_img_link=@drill_img_link, drill_vid_link=@drill_vid_link where Drill_id='" + TextBox1.Text.Trim() + "'", con);
+
+                    cmd.Parameters.AddWithValue("@drill_name", TextBox2.Text.Trim());
+                    cmd.Parameters.AddWithValue("@type", types);
+                    cmd.Parameters.AddWithValue("@explanation", TextBox3.Text.Trim());
+                    cmd.Parameters.AddWithValue("@organization", TextBox6.Text.Trim());
+                    cmd.Parameters.AddWithValue("@coaching_points", TextBox5.Text.Trim());
+                    cmd.Parameters.AddWithValue("@variations", TextBox7.Text.Trim());
+                    cmd.Parameters.AddWithValue("@drill_img_link", filepath);
+                    cmd.Parameters.AddWithValue("@drill_vid_link", filepath2);
+
+
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                    GridView1.DataBind();
+                    Response.Write("<script>alert('Drill Updated Successfully');</script>");
+
+
+                }
+                catch (Exception ex)
+                {
+                    Response.Write("<script>alert('" + ex.Message + "');</script>");
+                }
             }
             else
             {
@@ -135,17 +203,32 @@ namespace FootEd
 
                 }
                 SqlCommand cmd = new SqlCommand("select * from drill_master_tbl where drill_id='" + TextBox1.Text.Trim() + "'", con);
-                SqlDataReader dr = cmd.ExecuteReader();
-                if (dr.HasRows)
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                if (dt.Rows.Count >= 1)
                 {
-                    while (dr.Read())
+
+                    TextBox1.Text = dt.Rows[0]["drill_id"].ToString();
+                    TextBox2.Text = dt.Rows[0]["drill_name"].ToString();
+                    TextBox3.Text = dt.Rows[0]["explanation"].ToString();
+                    TextBox6.Text = dt.Rows[0]["organization"].ToString(); 
+                    TextBox5.Text = dt.Rows[0]["coaching_points"].ToString();
+                    TextBox7.Text = dt.Rows[0]["variations"].ToString();
+                    ListBox1.ClearSelection();
+                    string[] type = dt.Rows[0]["type"].ToString().Trim().Split(',');
+                    for (int i = 0; i < type.Length; i++)
                     {
-                        TextBox2.Text = dr.GetValue(0).ToString();
-                        TextBox7.Text = dr.GetValue(9).ToString();
-                        TextBox3.Text = dr.GetValue(2).ToString();
+                        for (int j = 0; j < ListBox1.Items.Count; j++)
+                        {
+                            if (ListBox1.Items[j].ToString() == type[i])
+                            {
+                                ListBox1.Items[j].Selected = true;
 
-
+                            }
+                        }
                     }
+
 
                 }
                 else
@@ -166,8 +249,11 @@ namespace FootEd
         {
             TextBox1.Text = "";
             TextBox2.Text = "";
-            TextBox7.Text = "";
+            ListBox1.Text = "";
             TextBox3.Text = "";
+            TextBox6.Text = "";
+            TextBox5.Text = "";
+            TextBox7.Text = "";
 
         }
 
@@ -181,13 +267,18 @@ namespace FootEd
                 {
                     types = types + ListBox1.Items[i] + ",";
                 }
-                // types = Adventure,Self Help,
+                // types = Attacking, Defending,
                 types = types.Remove(types.Length - 1);
 
-                string filepath = "~/book_inventory/books1.png";
+                string filepath = "~/drill_catalogue/cone.png";
                 string filename = Path.GetFileName(PhotoUpload.PostedFile.FileName);
-                PhotoUpload.SaveAs(Server.MapPath("book_inventory/" + filename));
-                filepath = "~/book_inventory/" + filename;
+                PhotoUpload.SaveAs(Server.MapPath("drill_catalogue/" + filename));
+                filepath = "~/drill_catalogue/" + filename;
+
+                string filepath2 = "~/drill_catalogue/cone.png";;
+                string filename2 = Path.GetFileName(VideoUpload.PostedFile.FileName);
+                VideoUpload.SaveAs(Server.MapPath("" + filename2));
+                filepath2 = "~/drill_catalogue/" + filename2;
 
 
                 SqlConnection con = new SqlConnection(strcon);
@@ -196,13 +287,17 @@ namespace FootEd
                     con.Open();
                 }
 
-                SqlCommand cmd = new SqlCommand("INSERT INTO drill_master_tbl(drill_id,drill_name,type,drill_img_link,drill_vid_link) values(@drill_id,@drill_name,@type,@drill_img_link,@drill_vid_link)", con);
+                SqlCommand cmd = new SqlCommand("INSERT INTO drill_master_tbl(drill_id,drill_name,type,explanation,organization,coaching_points,variations,drill_img_link,drill_vid_link) values(@drill_id,@drill_name,@type,@explanation,@organization,@coaching_points,@variations,@drill_img_link,@drill_vid_link)", con);
 
                 cmd.Parameters.AddWithValue("@drill_id", TextBox1.Text.Trim());
                 cmd.Parameters.AddWithValue("@drill_name", TextBox2.Text.Trim());
                 cmd.Parameters.AddWithValue("@type", types);
+                cmd.Parameters.AddWithValue("@explanation", TextBox3.Text.Trim());
+                cmd.Parameters.AddWithValue("@organization", TextBox6.Text.Trim());
+                cmd.Parameters.AddWithValue("@coaching_points", TextBox5.Text.Trim());
+                cmd.Parameters.AddWithValue("@variations", TextBox7.Text.Trim());
                 cmd.Parameters.AddWithValue("@drill_img_link", filepath);
-                //cmd.Parameters.AddWithValue("@drill_vid_link", filepath2);
+                cmd.Parameters.AddWithValue("@drill_vid_link", filepath2);
 
                 cmd.ExecuteNonQuery();
                 con.Close();

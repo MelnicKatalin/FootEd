@@ -226,7 +226,8 @@
     <Content Include="datatables\css\jquery.dataTables.min.css" />
     <Content Include="datatables\js\jquery.dataTables.min.js" />
     <Content Include="drilldetails.aspx" />
-    <Content Include="drills.aspx" />
+    <Content Include="viewdrills.aspx" />
+    <Content Include="drill_catalogue\cone.png" />
     <Content Include="fontawesome\LICENSE.txt" />
     <Content Include="fontawesome\svgs\brands\42-group.svg" />
     <Content Include="fontawesome\svgs\brands\500px.svg" />
@@ -2312,12 +2313,12 @@
     <Compile Include="drilldetails.aspx.designer.cs">
       <DependentUpon>drilldetails.aspx</DependentUpon>
     </Compile>
-    <Compile Include="drills.aspx.cs">
-      <DependentUpon>drills.aspx</DependentUpon>
+    <Compile Include="viewdrills.aspx.cs">
+      <DependentUpon>viewdrills.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="drills.aspx.designer.cs">
-      <DependentUpon>drills.aspx</DependentUpon>
+    <Compile Include="viewdrills.aspx.designer.cs">
+      <DependentUpon>viewdrills.aspx</DependentUpon>
     </Compile>
     <Compile Include="forum.aspx.cs">
       <DependentUpon>forum.aspx</DependentUpon>

@@ -20,7 +20,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-   <div class="container-fluid">
+    <div class="container-fluid">
       <div class="row">
          <div class="col-md-5">
             <div class="card">
@@ -46,12 +46,12 @@
                   </div>
                   <div class="row">
                      <div class="col">
-                        <asp:FileUpload class="form-control" ID="PhotoUpload" runat="server" />
+                        <asp:FileUpload class="form-control" ID="PhotoUpload" runat="server"  />
                      </div>
                   </div>
                   <div class="row">
                       <div class="col">
-                          <asp:FileUpload class="form-control" ID="VidoeUpload" runat="server" />
+                          <asp:FileUpload class="form-control" ID="VideoUpload" runat="server" />
                       </div>
                   </div>
                   
@@ -62,7 +62,7 @@
                         <div class="form-group">
                            <div class="input-group">
                               <asp:TextBox CssClass="form-control" ID="TextBox1" runat="server" placeholder="Drill ID"></asp:TextBox>
-                              <asp:LinkButton class="btn btn-primary" ID="LinkButton4" runat="server"><i class="fas fa-check-circle"></i></asp:LinkButton>
+                              <asp:Button class="btn btn-primary" ID="Button4" runat="server" Text="Go" OnClick="Button4_Click" />
                            </div>
                         </div>
                      </div>
@@ -125,13 +125,13 @@
                    </div>
                    <div class="row">
                      <div class="col-4">
-                        <asp:Button ID="Button1" class="btn btn-lg btn-block btn-success" runat="server" Text="Add" />
+                        <asp:Button ID="Button1" class="btn btn-lg btn-block btn-success" runat="server" Text="Add" OnClick="Button1_Click"/>
                      </div>
                      <div class="col-4">
-                        <asp:Button ID="Button3" class="btn btn-lg btn-block btn-warning" runat="server" Text="Update" />
+                        <asp:Button ID="Button3" class="btn btn-lg btn-block btn-warning" runat="server" Text="Update" OnClick="Button3_Click"/>
                      </div>
                      <div class="col-4">
-                        <asp:Button ID="Button2" class="btn btn-lg btn-block btn-danger" runat="server" Text="Delete" />
+                        <asp:Button ID="Button2" class="btn btn-lg btn-block btn-danger" runat="server" Text="Delete" OnClick="Button2_Click"/>
                      </div>
                   </div>
                </div>
@@ -155,8 +155,47 @@
                      </div>
                   </div>
                   <div class="row">
+                         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:FootEdDBConnectionString2 %>" SelectCommand="SELECT * FROM [drill_master_tbl]"></asp:SqlDataSource>
                      <div class="col">
-                        <asp:GridView class="table table-striped table-bordered" ID="GridView1" runat="server"></asp:GridView>
+                         <asp:GridView class="table table-striped table-bordered" ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="drill_id" DataSourceID="SqlDataSource1">
+                             <Columns>
+                                 <asp:BoundField DataField="drill_id" HeaderText="ID" ReadOnly="True" SortExpression="drill_id">
+                                     <ControlStyle Font-Bold="True" />
+                                     <ItemStyle Font-Bold="True" />
+                                 </asp:BoundField>
+                                 <asp:TemplateField>
+                                     <ItemTemplate>
+                                         <div class="container-fluid">
+                                             <div class="row">
+                                                 <div class="col-lg-10">
+                                                     <div class="row">
+                                                         <div class="col-12">
+                                                             <asp:Label ID="Label1" runat="server" Text='<%# Eval("drill_name") %>' Font-Bold="True" Font-Size="X-Large"></asp:Label>
+                                                         </div>
+                                                     </div>
+                                                     <div class="row">
+                                                         <div class="col-12">
+                                                             Explanation -
+                                                   <asp:Label ID="Label12" runat="server" Font-Bold="True" Font-Italic="True" Font-Size="Smaller" Text='<%# Eval("explanation") %>'></asp:Label>
+                                                         </div>
+                                                     </div>
+                                                     <div class="row">
+                                                         <div class="col-12">
+                                                             Organization -
+                                                   <asp:Label ID="Label2" runat="server" Font-Bold="True" Font-Italic="True" Font-Size="Smaller" Text='<%# Eval("organization") %>'></asp:Label>
+                                                         </div>
+                                                     </div>
+                                                 </div>
+                                                 <div class="col-lg-2">
+                                                     <asp:Image class="img-fluid" ID="Image1" runat="server" ImageUrl='<%# Eval("drill_img_link") %>' />
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </ItemTemplate>
+                                 </asp:TemplateField>
+                             </Columns>
+                         </asp:GridView>
+                        
                      </div>
                   </div>
                </div>

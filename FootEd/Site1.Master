@@ -59,9 +59,7 @@
                         <li class="nav-item active">
                             <a class="nav-link" href="forum.aspx">Forum</a>
                         </li>
-                        <%--<li class="nav-item active">
-                            <a class="nav-link" href="#">Terms</a>
-                        </li>--%>
+                        
                     </ul>
 
                     <ul class="navbar-nav">
@@ -116,32 +114,7 @@
                 </div>
             </div>
         </footer>
-        <%--<footer>
-            <div id="footer1" class="container-fluid">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                        <p>
-                            <asp:LinkButton class="footerlinks" ID="LinkButton6" runat="server" OnClick="LinkButton6_Click">Admin Login</asp:LinkButton>
-                            &nbsp;
-                            <asp:LinkButton class="footerlinks" ID="LinkButton8" runat="server" OnClick="LinkButton8_Click" Visible="False">Drills Management</asp:LinkButton>
-                            &nbsp;
-                             <asp:LinkButton class="footerlinks" ID="LinkButton10" runat="server" OnClick="LinkButton10_Click" Visible="False">Member Management</asp:LinkButton>
-                        </p>
-
-                    </div>
-
-                </div>
-            </div>
-            <div id="footer2" class="container-fluid">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                        <p style="color:whitesmoke">&copy All right Reversed. <a class="footerlinks" href="#" target="_blank">Simple Snippets</a></p>
-                    </div>
-                </div>
-            </div>
-
-        </footer>--%>
-        <!-- ./Footer -->
+        
     </form>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

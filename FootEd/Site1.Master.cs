@@ -84,7 +84,7 @@ namespace FootEd
 
         protected void LinkButton4_Click(object sender, EventArgs e)
         {
-            Response.Redirect("drills.aspx");
+            Response.Redirect("viewdrills.aspx");
         }
 
         protected void LinkButton1_Click(object sender, EventArgs e)
