@@ -24,13 +24,13 @@ namespace FootEd
         protected global::System.Web.UI.WebControls.TextBox txtTitle;
 
         /// <summary>
-        /// txtContent control.
+        /// txtSubject control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtContent;
+        protected global::System.Web.UI.WebControls.TextBox txtSubject;
 
         /// <summary>
         /// btnSubmit control.
@@ -49,5 +49,19 @@ namespace FootEd
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater rptPosts;
+
+        /// <summary>
+        /// Master property.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated property.
+        /// </remarks>
+        public new FootEd.Site1 Master
+        {
+            get
+            {
+                return ((FootEd.Site1)(base.Master));
+            }
+        }
     }
 }

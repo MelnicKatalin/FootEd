@@ -2,62 +2,63 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
-using System.Web.UI;
+using System.Web.UI.WebControls;
+
 namespace FootEd
 {
     public partial class forum : System.Web.UI.Page
     {
-        //protected void page_load(object sender, EventArgs e)
-        //{
-        //    if (!IsPostBack)
-        //    {
-        //        bindposts();
-        //    }
-        //}
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                BindPosts();
+            }
+        }
 
-        //private void bindposts()
-        //{
-        //    string connstr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
-        //    SqlConnection conn = new SqlConnection(connstr);)
-        //    {
-        //        sqldataadapter da = new sqldataadapter("select postid, title, author, date from posts", conn);
-        //        datatable dt = new datatable();
-        //        da.fill(dt);
-        //        gvposts.datasource = dt;
-        //        gvposts.databind();
-        //    }
-        //}
+        private void BindPosts()
+        {
+            string connStr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                SqlDataAdapter da = new SqlDataAdapter("SELECT PostId, Title, Subject, Author, Date FROM Posts", conn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                rptPosts.DataSource = dt;
+                rptPosts.DataBind();
+            }
+        }
 
-        //protected void btnsubmit_click(object sender, eventargs e)
-        //{
-        //    string title = txttitle.text.trim();
-        //    string content = txtcontent.text.trim();
-        //    string author = user.identity.name; // assuming users are authenticated
-        //    datetime date = datetime.now;
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            string title = txtTitle.Text.Trim();
+            string Subject = txtSubject.Text.Trim();
+            string author = User.Identity.Name; // Assuming users are authenticated
+            DateTime date = DateTime.Now;
 
-        //    string connstr = configurationmanager.connectionstrings["yourconnectionstring"].connectionstring;
-        //    using (sqlconnection conn = new sqlconnection(connstr))
-        //    {
-        //        sqlcommand cmd = new sqlcommand("insert into posts (title, content, author, date) values (@title, @content, @author, @date)", conn);
-        //        cmd.parameters.addwithvalue("@title", title);
-        //        cmd.parameters.addwithvalue("@content", content);
-        //        cmd.parameters.addwithvalue("@author", author);
-        //        cmd.parameters.addwithvalue("@date", date);
+            string connStr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                SqlCommand cmd = new SqlCommand("INSERT INTO Posts (Title, Subject, Author, Date) VALUES (@Title, @Subject, @Author, @Date)", conn);
+                cmd.Parameters.AddWithValue("@Title", title);
+                cmd.Parameters.AddWithValue("@Subject", Subject);
+                cmd.Parameters.AddWithValue("@Author", author);
+                cmd.Parameters.AddWithValue("@Date", date);
 
-        //        conn.open();
-        //        cmd.executenonquery();
-        //        conn.close();
-        //    }
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+            }
 
-        //    bindposts();
-        //    txttitle.text = string.empty;
-        //    txtcontent.text = string.empty;
-        //}
+            BindPosts();
+            txtTitle.Text = string.Empty;
+            txtSubject.Text = string.Empty;
+        }
 
-        //protected void gvposts_selectedindexchanged(object sender, eventargs e)
-        //{
-        //    int postid = (int)gvposts.selecteddatakey.value;
-        //    response.redirect("post.aspx?postid=" + postid);
-        //}
+        protected void ViewPost_Command(object sender, CommandEventArgs e)
+        {
+            int postId = Convert.ToInt32(e.CommandArgument);
+            Response.Redirect("Post.aspx?PostId=" + postId);
+        }
     }
 }

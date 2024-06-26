@@ -53,7 +53,7 @@
                                 <div class="details-label">Video</div>
                                 <div class="details-content">
                                     <video width="100%" height="auto" controls>
-                                        <source src='<%# Eval("drill_vid_link") %>' type="video/mp4">
+                                        <source src='<%# ResolveUrl(Eval("drill_vid_link").ToString()) %>' type="video/mp4">
                                         Your browser does not support the video tag.
                                     </video>
                                 </div>

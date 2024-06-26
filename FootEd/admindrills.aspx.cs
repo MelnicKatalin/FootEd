@@ -151,9 +151,9 @@ namespace FootEd
                     }
                     else
                     {
-                        PhotoUpload.SaveAs(Server.MapPath("drill_catalogue/" + filename));
+                        PhotoUpload.SaveAs(Server.MapPath("~/drill_catalogue/" + filename));
                         filepath = "~/drill_catalogue/" + filename;
-                        VideoUpload.SaveAs(Server.MapPath("drill_catalogue/" + filename2));
+                        VideoUpload.SaveAs(Server.MapPath("~/drill_catalogue/" + filename2));
                         filepath2 = "~/drill_catalogue/" + filename2;
                     }
 
@@ -272,12 +272,12 @@ namespace FootEd
 
                 string filepath = "~/drill_catalogue/";
                 string filename = Path.GetFileName(PhotoUpload.PostedFile.FileName);
-                PhotoUpload.SaveAs(Server.MapPath("drill_catalogue/" + filename));
+                PhotoUpload.SaveAs(Server.MapPath("~/drill_catalogue/" + filename));
                 filepath = "~/drill_catalogue/" + filename;
 
                 string filepath2 = "~/drill_catalogue/";;
                 string filename2 = Path.GetFileName(VideoUpload.PostedFile.FileName);
-                VideoUpload.SaveAs(Server.MapPath("" + filename2));
+                VideoUpload.SaveAs(Server.MapPath("~/drill_catalogue/" + filename2));
                 filepath2 = "~/drill_catalogue/" + filename2;
 
 
