@@ -19,21 +19,21 @@
             <div class="row">
                 <div class="col-md-4">
                     <center>
-                        <img width="150px" src="imgs/cone.png" /><a href="homepage.aspx"></a>
+                        <img width="100px" src="imgs/cone.png" /><a href="homepage.aspx"></a>
                         <h4>Drills Catalogue</h4>
                         <p class="text-justify"></p>
                     </center>
                 </div>
                 <div class="col-md-4">
                     <center>
-                        <img width="150px" src="imgs/glass.png" />
+                        <img width="100px" src="imgs/glass.png" />
                         <h4>Search Drills</h4>
                         <p class="text-justify"></p>
                     </center>
                 </div>
                 <div class="col-md-4">
                     <center>
-                        <img width="150px" src="imgs/forum.png " />
+                        <img width="100px" src="imgs/forum.png " />
                         <h4>Browse the forum</h4>
                         <p class="text-justify"></p>
                     </center>
@@ -42,7 +42,7 @@
         </div>
     </section>
     <section>
-        <img src="imgs/homeimage3.jpeg" class="img-fluid" />
+        <img src="imgs/homeimage3.jpg" class="img-fluid" />
     </section>
     <section>
         <div class="container">
@@ -58,21 +58,21 @@
             <div class="row">
                 <div class="col-md-4">
                     <center>
-                        <img width="150px" src="imgs/sign-up.png" />
+                        <img width="100px" src="imgs/sign-up.png" />
                         <h4>Sign Up</h4>
                         <p class="text-justify"></p>
                     </center>
                 </div>
                 <div class="col-md-4">
                     <center>
-                        <img width="150px" src="imgs/glass.png" />
+                        <img width="100px" src="imgs/glass.png" />
                         <h4>Search Drills</h4>
                         <p class="text-justify"></p>
                     </center>
                 </div>
                 <div class="col-md-4">
                     <center>
-                        <img width="150px" src="imgs/football.png" />
+                        <img width="100px" src="imgs/football.png" />
                         <h4>Visit Us</h4>
                         <p class="text-justify"></p>
                     </center>

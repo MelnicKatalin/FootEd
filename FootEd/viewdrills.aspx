@@ -29,60 +29,60 @@
                         <div class="card-body">
 
                             <div class="row">
-       <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:FootEdDBConnectionString3 %>" SelectCommand="SELECT * FROM [drill_master_tbl]"></asp:SqlDataSource>
-   <div class="col">
-       <asp:GridView class="table table-striped table-bordered" ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="drill_id" DataSourceID="SqlDataSource1">
-           <Columns>
-               <asp:BoundField DataField="drill_id" HeaderText="ID" ReadOnly="True" SortExpression="drill_id">
-                   <ControlStyle Font-Bold="True" />
-                   <ItemStyle Font-Bold="True" />
-               </asp:BoundField>
-               <asp:TemplateField>
-                   <ItemTemplate>
-                       <div class="container-fluid">
-                           <div class="row">
-                               <div class="col-lg-10">
-                                   <div class="row">
-                                       <div class="col-12">
-                                           <asp:Label ID="Label1" runat="server" Text='<%# Eval("drill_name") %>' Font-Bold="True" Font-Size="X-Large"></asp:Label>
-                                       </div>
-                                   </div>
-                                   <div class="row">
-                                       <div class="col-12">
-                                           Explanation -
+                                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:FootEdDBConnectionString3 %>" SelectCommand="SELECT * FROM [drill_master_tbl]"></asp:SqlDataSource>
+                                <div class="col">
+                                    <asp:GridView class="table table-striped table-bordered" ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="drill_id" DataSourceID="SqlDataSource1">
+                                        <Columns>
+                                            <asp:BoundField DataField="drill_id" HeaderText="ID" ReadOnly="True" SortExpression="drill_id">
+                                                <ControlStyle Font-Bold="True" />
+                                                <ItemStyle Font-Bold="True" />
+                                            </asp:BoundField>
+                                            <asp:TemplateField>
+                                                <ItemTemplate>
+                                                    <div class="container-fluid">
+                                                        <div class="row">
+                                                            <div class="col-lg-10">
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        <asp:Label ID="Label1" runat="server" Text='<%# Eval("drill_name") %>' Font-Bold="True" Font-Size="X-Large"></asp:Label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        Explanation -
                                  <asp:Label ID="Label12" runat="server" Font-Bold="True" Font-Italic="True" Font-Size="Smaller" Text='<%# Eval("explanation") %>'></asp:Label>
-                                       </div>
-                                   </div>
-                                   <div class="row">
-                                       <div class="col-12">
-                                           Organization -
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        Organization -
                                  <asp:Label ID="Label2" runat="server" Font-Bold="True" Font-Italic="True" Font-Size="Smaller" Text='<%# Eval("organization") %>'></asp:Label>
-                                       </div>
-                                   </div>
-                               </div>
-                               <div class="col-lg-2">
-                                   <asp:Image class="img-fluid" ID="Image1" runat="server" ImageUrl='<%# Eval("drill_img_link") %>' />
-                               </div>
-                               <div class="input-group">
-                                   <asp:LinkButton class="btn btn-primary" ID="LinkButton1" runat="server" Text="More Details" CommandArgument='<%# Eval("drill_id") %>' OnClick="LinkButton1_Click"><i class="fas fa-check-circle"></i></asp:LinkButton>
-                               </div>
-                           </div>
-                       </div>
-                   </ItemTemplate>
-               </asp:TemplateField>
-           </Columns>
-       </asp:GridView>
-      
-   </div>
-</div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-2">
+                                                                <asp:Image class="img-fluid" ID="Image1" runat="server" ImageUrl='<%# Eval("drill_img_link") %>' />
+                                                            </div>
+                                                            <div class="input-group">
+                                                                <asp:LinkButton class="btn btn-primary" ID="LinkButton1" runat="server" Text="More Details" CommandArgument='<%# Eval("drill_id") %>' OnClick="LinkButton1_Click"><i class="fas fa-check-circle"></i></asp:LinkButton>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                        </Columns>
+                                    </asp:GridView>
+
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <center>
-                <a href="home.aspx"><< Back to Home</a><span class="clearfix"></span>
-                <br />
-                <center>
+             <div class="row mt-4">
+                 <div class="col-sm-12 text-center">
+                     <a href="homepage.aspx" class="btn btn-primary">&laquo; Back to HomePage</a>
+                 </div>
+             </div>
         </div>
     </div>
 </asp:Content>

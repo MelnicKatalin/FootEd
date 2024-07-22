@@ -1,5 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="forum.aspx.cs" Inherits="FootEd.forum" %>
-<%@ MasterType VirtualPath="~/Site1.Master" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="forum.aspx.cs" Inherits="FootEd.forum" MasterPageFile="~/Site1.Master" %>
+
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Football Forum</title>
@@ -48,9 +48,9 @@
                         <asp:TextBox ID="txtTitle" runat="server" CssClass="form-control" Placeholder="Title"></asp:TextBox>
                     </div>
                     <div class="form-group">
-                        <asp:TextBox ID="txtSubject" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="5" Placeholder="Content"></asp:TextBox>
+                        <asp:TextBox ID="txtContent" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="5" Placeholder="Content"></asp:TextBox>
                     </div>
-                    <asp:Button ID="btnSubmit" runat="server" CssClass="btn btn-primary btn-block" Text="Submit" OnClick="btnSubmit_Click" />
+                    <asp:Button ID="btnSubmit" runat="server" CssClass="btn btn-primary btn-block" Text="Submit"  />
                 </div>
             </div>
             <div class="col-md-8">
@@ -66,7 +66,7 @@
                                 <div class="post-footer">
                                     <small class="text-muted">By <%# Eval("Author") %> on <%# Eval("Date", "{0:yyyy-MM-dd HH:mm:ss}") %></small>
                                     <div class="text-right">
-                                        <asp:Button ID="btnView" runat="server" CssClass="btn btn-link" Text="View" CommandName="Select" CommandArgument='<%# Eval("PostId") %>' OnCommand="ViewPost_Command" />
+                                        <asp:Button ID="btnView" runat="server" CssClass="btn btn-link" Text="View" CommandName="Select" CommandArgument='<%# Eval("PostId") %>'  />
                                     </div>
                                 </div>
                             </div>

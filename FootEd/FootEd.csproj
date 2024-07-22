@@ -226,7 +226,8 @@
     <Content Include="datatables\css\jquery.dataTables.min.css" />
     <Content Include="datatables\js\jquery.dataTables.min.js" />
     <Content Include="drilldetails.aspx" />
-    <Content Include="index.js" />
+    <Content Include="imgs\homeimage2.jpg" />
+    <Content Include="imgs\homeimage3.jpg" />
     <Content Include="viewdrills.aspx" />
     <Content Include="drill_catalogue\cone.png" />
     <Content Include="fontawesome\LICENSE.txt" />
@@ -2275,7 +2276,6 @@
     <Content Include="imgs\forum.png" />
     <Content Include="imgs\generaluser.png" />
     <Content Include="imgs\glass.png" />
-    <Content Include="imgs\homeimage2.jpg" />
     <Content Include="imgs\FootEd.png" />
     <Content Include="imgs\homeimage3.jpeg" />
     <Content Include="imgs\sign-up.png" />
