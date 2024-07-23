@@ -14,9 +14,9 @@ namespace FootEd
             
         }
 
-        protected void LinkButton1_Click(object sender, EventArgs e)
+        protected void Button1_Click(object sender, EventArgs e)
         {
-            LinkButton btn = (LinkButton)sender;
+            Button btn = (Button)sender;
             string drillId = btn.CommandArgument;
             Response.Redirect("drilldetails.aspx?drill_id=" + drillId);
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace FootEd
 {
@@ -15,6 +16,13 @@ namespace FootEd
                     Response.Redirect("viewdrills.aspx");
                 }
             }
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            string drillId = btn.CommandArgument;
+            Response.Redirect("drillvideo.aspx?drill_id=" + drillId);
         }
     }
 }

@@ -50,7 +50,9 @@
                                 <div class="details-content"><%# Eval("variations") %></div>
                             </div>
                             <div class="col-12 text-center mt-4">
-                                <asp:Button ID="btnViewVideo" runat="server" Text="View Full Video" PostBackUrl='<%# "drillvideo.aspx?drill_id=" + Eval("drill_id") %>' CssClass="btn btn-primary" />
+                                <center>
+                                    <asp:Button ID="btnViewVideo" runat="server" Text="View Full Video" PostBackUrl='<%# "drillvideo.aspx?drill_id=" + Eval("drill_id") %>' CssClass="btn btn-primary" />
+                                </center>
                             </div>
                         </div>
                     </ItemTemplate>
