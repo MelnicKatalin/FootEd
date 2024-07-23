@@ -226,7 +226,11 @@
     <Content Include="datatables\css\jquery.dataTables.min.css" />
     <Content Include="datatables\js\jquery.dataTables.min.js" />
     <Content Include="drilldetails.aspx" />
+    <Content Include="drillvideo.aspx" />
+    <Content Include="imgs\chatbot.png" />
+    <Content Include="imgs\chatbot1.png" />
     <Content Include="imgs\homeimage2.jpg" />
+    <Content Include="imgs\homeimage2.png" />
     <Content Include="imgs\homeimage3.jpg" />
     <Content Include="viewdrills.aspx" />
     <Content Include="drill_catalogue\cone.png" />
@@ -2313,6 +2317,13 @@
     </Compile>
     <Compile Include="drilldetails.aspx.designer.cs">
       <DependentUpon>drilldetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="drillvideo.aspx.cs">
+      <DependentUpon>drillvideo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="drillvideo.aspx.designer.cs">
+      <DependentUpon>drillvideo.aspx</DependentUpon>
     </Compile>
     <Compile Include="viewdrills.aspx.cs">
       <DependentUpon>viewdrills.aspx</DependentUpon>

@@ -49,14 +49,8 @@
                                 <div class="details-label">Variations</div>
                                 <div class="details-content"><%# Eval("variations") %></div>
                             </div>
-                            <div class="col-12">
-                                <div class="details-label">Video</div>
-                                <div class="details-content">
-                                    <video width="100%" height="auto" controls>
-                                        <source src='<%# ResolveUrl(Eval("drill_vid_link").ToString()) %>' type="video/mp4">
-                                        Your browser does not support the video tag.
-                                    </video>
-                                </div>
+                            <div class="col-12 text-center mt-4">
+                                <asp:Button ID="btnViewVideo" runat="server" Text="View Full Video" PostBackUrl='<%# "drillvideo.aspx?drill_id=" + Eval("drill_id") %>' CssClass="btn btn-primary" />
                             </div>
                         </div>
                     </ItemTemplate>
