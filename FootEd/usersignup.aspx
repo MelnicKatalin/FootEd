@@ -56,32 +56,6 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-4">
-                                <label>Country</label>
-                                <div class="form-group">
-                                    <asp:DropDownList class="form-control" ID="DropDownList1" runat="server">
-                                        <asp:ListItem Text="Select" Value="select" />
-                                        <asp:ListItem Text="Romania" Value="Romania" /> 
-
-                                    </asp:DropDownList>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <label>City</label>
-                                <div class="form-group">
-                                    <asp:TextBox class="form-control" ID="TextBox6" runat="server" placeholder="City"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <label>Pincode</label>
-                                <div class="form-group">
-                                    <asp:TextBox class="form-control" ID="TextBox7" runat="server" placeholder="Pincode" TextMode="Number"></asp:TextBox>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="row">
                             <div class="col-md-6">
                                 <label>User ID</label>
                                 <div class="form-group">

@@ -7,48 +7,54 @@ using System.Web.UI.WebControls;
 
 namespace FootEd
 {
-    public partial class forum : System.Web.UI.Page
+    public partial class comments : System.Web.UI.Page
     {
         private string connectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+        private int postId;
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!int.TryParse(Request.QueryString["postId"], out postId))
+            {
+                Response.Redirect("forum.aspx");
+            }
+
             if (!IsPostBack)
             {
-                BindPosts();
+                BindComments();
             }
         }
 
-        protected void BindPosts()
+        protected void BindComments()
         {
-            List<Post> posts = new List<Post>();
+            List<Comment> comments = new List<Comment>();
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "SELECT PostId, Title, Post_Content, UserId, Date FROM Posts";
+                string query = "SELECT CommentId, PostId, Comments_Content, UserId, Date FROM Comments WHERE PostId = @PostId";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
+                    cmd.Parameters.AddWithValue("@PostId", postId);
                     SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
-                        Post post = new Post
+                        Comment comment = new Comment
                         {
-                            PostId = reader.GetInt32(0),
-                            Title = reader.GetString(1),
+                            CommentId = reader.GetInt32(0),
+                            PostId = reader.GetInt32(1),
                             Content = reader.GetString(2),
                             UserId = reader.GetString(3),
                             Date = reader.GetDateTime(4),
                             Author = GetAuthorName(reader.GetString(3))
                         };
-
-                        posts.Add(post);
+                        comments.Add(comment);
                     }
                 }
             }
 
-            rptPosts.DataSource = posts;
-            rptPosts.DataBind();
+            rptComments.DataSource = comments;
+            rptComments.DataBind();
         }
 
         protected string GetAuthorName(string userId)
@@ -65,56 +71,25 @@ namespace FootEd
             }
         }
 
-        protected void rptPosts_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        protected void rptComments_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
             {
-                Post post = (Post)e.Item.DataItem;
-                Button btnDeletePost = (Button)e.Item.FindControl("btnDeletePost");
+                Comment comment = (Comment)e.Item.DataItem;
+                Button btnDeleteComment = (Button)e.Item.FindControl("btnDeleteComment");
                 string currentUserId = Session["username"] as string;
 
-                // Only show delete button if the user is the post owner
-                if (currentUserId != post.UserId)
+                // Only show delete button if the user is the comment owner
+                if (currentUserId != comment.UserId)
                 {
-                    btnDeletePost.Visible = false;
+                    btnDeleteComment.Visible = false;
                 }
             }
         }
 
-        protected void btnSubmitPost_Click(object sender, EventArgs e)
+        protected void btnSubmitComment_Click(object sender, EventArgs e)
         {
-            string title = txtTitle.Text;
-            string content = txtContent.Text;
-            string userId = Session["username"] as string;
-
-            if (string.IsNullOrEmpty(userId))
-            {
-                Response.Write("<script>alert('Not Connected');</script>");
-            }
-            else
-            {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    conn.Open();
-                    string query = "INSERT INTO Posts (Title, Post_Content, UserId, Date) VALUES (@Title, @Content, @UserId, @Date)";
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@Title", title);
-                        cmd.Parameters.AddWithValue("@Content", content);
-                        cmd.Parameters.AddWithValue("@UserId", userId);
-                        cmd.Parameters.AddWithValue("@Date", DateTime.Now);
-                        cmd.ExecuteNonQuery();
-                    }
-                }
-            }
-
-            BindPosts();
-        }
-
-        protected void btnDeletePost_Click(object sender, EventArgs e)
-        {
-            Button btn = (Button)sender;
-            int postId = int.Parse(btn.CommandArgument);
+            string content = txtCommentContent.Text;
             string userId = Session["username"] as string;
 
             if (string.IsNullOrEmpty(userId))
@@ -126,27 +101,56 @@ namespace FootEd
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                // Ensure only the author can delete the post
-                string query = "DELETE FROM Posts WHERE PostId = @PostId AND UserId = @UserId";
+                string query = "INSERT INTO Comments (PostId, Comments_Content, UserId, Date) VALUES (@PostId, @Content, @UserId, @Date)";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@PostId", postId);
+                    cmd.Parameters.AddWithValue("@Content", content);
+                    cmd.Parameters.AddWithValue("@UserId", userId);
+                    cmd.Parameters.AddWithValue("@Date", DateTime.Now);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+
+            BindComments();
+        }
+
+        protected void btnDeleteComment_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            int commentId = int.Parse(btn.CommandArgument);
+            string userId = Session["username"] as string;
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                Response.Write("<script>alert('Not Connected');</script>");
+                return;
+            }
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                // Ensure only the author can delete the comment
+                string query = "DELETE FROM Comments WHERE CommentId = @CommentId AND UserId = @UserId";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@CommentId", commentId);
                     cmd.Parameters.AddWithValue("@UserId", userId);
                     int rowsAffected = cmd.ExecuteNonQuery();
                     if (rowsAffected == 0)
                     {
-                        Response.Write("<script>alert('You do not have permission to delete this post.');</script>");
+                        Response.Write("<script>alert('You do not have permission to delete this comment.');</script>");
                     }
                 }
             }
 
-            BindPosts();
+            BindComments();
         }
 
-        public class Post
+        public class Comment
         {
+            public int CommentId { get; set; }
             public int PostId { get; set; }
-            public string Title { get; set; }
             public string Content { get; set; }
             public string UserId { get; set; }
             public string Author { get; set; }

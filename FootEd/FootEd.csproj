@@ -220,6 +220,7 @@
     <Content Include="bootstrap\js\jquery-3.3.1.slim.min.js" />
     <Content Include="bootstrap\js\popper.min.js" />
     <Content Include="chat-bot.js" />
+    <Content Include="comments.aspx" />
     <Content Include="css\customstylesheet.css" />
     <Content Include="css\general.css" />
     <Content Include="css\index.css" />
@@ -227,11 +228,14 @@
     <Content Include="datatables\js\jquery.dataTables.min.js" />
     <Content Include="drilldetails.aspx" />
     <Content Include="drillvideo.aspx" />
+    <Content Include="imgs\chatbotinfo.txt" />
+    <Content Include="imgs\ChatBot_Information.txt" />
     <Content Include="imgs\chatbot.png" />
     <Content Include="imgs\chatbot1.png" />
     <Content Include="imgs\homeimage2.jpg" />
     <Content Include="imgs\homeimage2.png" />
     <Content Include="imgs\homeimage3.jpg" />
+    <Content Include="links.aspx" />
     <Content Include="viewdrills.aspx" />
     <Content Include="drill_catalogue\cone.png" />
     <Content Include="fontawesome\LICENSE.txt" />
@@ -2311,6 +2315,13 @@
     <Compile Include="adminmembermanagement.aspx.designer.cs">
       <DependentUpon>adminmembermanagement.aspx</DependentUpon>
     </Compile>
+    <Compile Include="comments.aspx.cs">
+      <DependentUpon>comments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="comments.aspx.designer.cs">
+      <DependentUpon>comments.aspx</DependentUpon>
+    </Compile>
     <Compile Include="drilldetails.aspx.cs">
       <DependentUpon>drilldetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2324,6 +2335,13 @@
     </Compile>
     <Compile Include="drillvideo.aspx.designer.cs">
       <DependentUpon>drillvideo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="links.aspx.cs">
+      <DependentUpon>links.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="links.aspx.designer.cs">
+      <DependentUpon>links.aspx</DependentUpon>
     </Compile>
     <Compile Include="viewdrills.aspx.cs">
       <DependentUpon>viewdrills.aspx</DependentUpon>

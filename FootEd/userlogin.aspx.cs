@@ -37,8 +37,8 @@ namespace FootEd
                     while (dr.Read())
                     {
                         Response.Write("<script>alert('Successful login');</script>");
-                        Session["username"] = dr.GetValue(0).ToString();
-                        Session["fullname"] = dr.GetValue(8).ToString();
+                        Session["username"] = dr.GetValue(7).ToString();
+                        Session["fullname"] = dr.GetValue(0).ToString();
                         Session["role"] = "user";
                         Session["status"] = dr.GetValue(9).ToString();
                     }

@@ -62,7 +62,7 @@ namespace FootEd
         }
         void signUpNewMember()
         {
-            //Response.Write("<script>alert('Testing');</script>");
+            
             try
             {
                 SqlConnection con = new SqlConnection(strcon);
@@ -70,14 +70,11 @@ namespace FootEd
                 {
                     con.Open();
                 }
-                SqlCommand cmd = new SqlCommand("INSERT INTO member_master_tbl(full_name,dob,contact_no,email,country,city,pincode,user_id,password,account_status) values(@full_name,@dob,@contact_no,@email,@country,@city,@pincode,@user_id,@password,@account_status)", con);
+                SqlCommand cmd = new SqlCommand("INSERT INTO member_master_tbl(full_name,dob,contact_no,email,user_id,password,account_status) values(@full_name,@dob,@contact_no,@email,@user_id,@password,@account_status)", con);
                 cmd.Parameters.AddWithValue("@full_name", TextBox1.Text.Trim());
                 cmd.Parameters.AddWithValue("@dob", TextBox2.Text.Trim());
                 cmd.Parameters.AddWithValue("@contact_no", TextBox3.Text.Trim());
                 cmd.Parameters.AddWithValue("@email", TextBox4.Text.Trim());
-                cmd.Parameters.AddWithValue("@country", DropDownList1.SelectedItem.Value);
-                cmd.Parameters.AddWithValue("@city", TextBox6.Text.Trim());
-                cmd.Parameters.AddWithValue("@pincode", TextBox7.Text.Trim());
                 cmd.Parameters.AddWithValue("@user_id", TextBox8.Text.Trim());
                 cmd.Parameters.AddWithValue("@password", TextBox9.Text.Trim());
                 cmd.Parameters.AddWithValue("@account_status", "pending");

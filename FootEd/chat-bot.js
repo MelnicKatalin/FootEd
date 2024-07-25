@@ -45,7 +45,7 @@
     chatWidgetContainer.innerHTML = `
     <div id="chat-bubble" class="w-16 h-16 bg-gray-800 rounded-full flex items-center justify-center cursor-pointer text-3xl">
       <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 2 0 012 2v8a2 2 2 0 01-2 2h-5l-5 5v-5z" />
       </svg>
     </div>
     <div id="chat-popup" class="hidden absolute bottom-20 right-0 w-96 bg-white rounded-md shadow-md flex flex-col transition-all text-sm">
@@ -79,9 +79,7 @@
         const message = chatInput.value.trim();
         if (!message) return;
 
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-
-        chatInput.value = '';
+        displayUserMessage(message);
 
         onUserRequest(message);
     });
@@ -108,8 +106,7 @@
         }
     }
 
-    async function onUserRequest(message) {
-        // Display user message
+    function displayUserMessage(message) {
         const messageElement = document.createElement('div');
         messageElement.className = 'flex justify-end mb-3';
         messageElement.innerHTML = `
@@ -119,44 +116,10 @@
     `;
         chatMessages.appendChild(messageElement);
         chatMessages.scrollTop = chatMessages.scrollHeight;
-
         chatInput.value = '';
-
-        // Send user message to ChatGPT API
-        try {
-            const replyMessage = await fetchChatGPTResponse(message);
-            reply(replyMessage);
-        } catch (error) {
-            console.error('Error fetching ChatGPT response:', error);
-            reply('Sorry, something went wrong. Please try again later.');
-        }
     }
 
-    async function fetchChatGPTResponse(userMessage) {
-        const apiKey = 'sk-proj-SxUlXIuhpbE9crGP66kPT3BlbkFJNLY7Wt1GupyCEZqAYeup'; // Replace with your OpenAI API key
-        const response = await fetch('https://api.openai.com/v1/chat/completions', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${apiKey}`
-            },
-            body: JSON.stringify({
-                model: "gpt-3.5-turbo",
-                messages: [{ role: "user", content: userMessage }]
-            })
-        });
-
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-
-        const data = await response.json();
-        console.log('API response data:', data); // Log the response for debugging
-        return data.choices[0].message.content;
-    }
-
-    function reply(message) {
-        const chatMessages = document.getElementById('chat-messages');
+    function displayReplyMessage(message) {
         const replyElement = document.createElement('div');
         replyElement.className = 'flex mb-3';
         replyElement.innerHTML = `
@@ -168,4 +131,59 @@
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 
+    async function onUserRequest(message) {
+        try {
+            const replyMessage = await fetchChatGPTResponse(message);
+            displayReplyMessage(replyMessage);
+        } catch (error) {
+            console.error('Error fetching ChatGPT response:', error);
+            displayReplyMessage('Sorry, something went wrong. Please try again later.');
+        }
+    }
+
+    async function fetchChatGPTResponse(userMessage) {
+        const apiKey = 'sk-proj-SxUlXIuhpbE9crGP66kPT3BlbkFJNLY7Wt1GupyCEZqAYeup'; // Replace with your OpenAI API key
+
+        try {
+            // Load text file contents
+            const textFileUrl = 'imgs/Training_Drills.json'; // Replace with the path to your text file
+            const textFileResponse = await fetch(textFileUrl);
+            if (!textFileResponse.ok) {
+                throw new Error('Failed to load text file');
+            }
+            const textFileContent = await textFileResponse.text();
+            console.log('Loaded text file content:', textFileContent); // Debugging log
+
+            // Use the text file content as context
+            const context = textFileContent;
+
+            const response = await fetch('https://api.openai.com/v1/chat/completions', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${apiKey}`
+                },
+                body: JSON.stringify({
+                    model: "gpt-3.5-turbo",
+                    instructions: "You are a Football (Soccer) assistant manager. Use the provided information to answer the user's questions.",
+                    messages: [
+                        { role: "system", content: "You are a Football (Soccer) assistant manager. Use the provided information to answer the user's questions." },
+                        { role: "system", content: context },
+                        { role: "user", content: userMessage }
+                    ]
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            const data = await response.json();
+            console.log('API response data:', data); // Log the response for debugging
+            return data.choices[0].message.content;
+        } catch (error) {
+            console.error('Error in fetchChatGPTResponse:', error);
+            throw error;
+        }
+    }
 })();
