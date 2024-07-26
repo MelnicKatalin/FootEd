@@ -132,13 +132,11 @@ namespace FootEd
                     while (dr.Read())
                     {
                         TextBox2.Text = dr.GetValue(0).ToString();
-                        TextBox7.Text = dr.GetValue(9).ToString();
+                        TextBox7.Text = dr.GetValue(6).ToString();
                         TextBox8.Text = dr.GetValue(1).ToString();
                         TextBox3.Text = dr.GetValue(2).ToString();
                         TextBox4.Text = dr.GetValue(3).ToString();
-                        TextBox9.Text = dr.GetValue(4).ToString();
-                        TextBox10.Text = dr.GetValue(5).ToString();
-                        TextBox11.Text = dr.GetValue(6).ToString();
+                        
                         
 
                     }
@@ -196,9 +194,7 @@ namespace FootEd
             TextBox8.Text = "";
             TextBox3.Text = "";
             TextBox4.Text = "";
-            TextBox9.Text = "";
-            TextBox10.Text = "";
-            TextBox11.Text = "";
+            
             
         }
 

@@ -6,7 +6,7 @@
     <div class="container mt-4">
         <div class="row">
             <div class="col-sm-12 text-center">
-                <h3>Drill Details</h3>
+                <h3></h3>
                 <hr />
             </div>
         </div>

@@ -82,7 +82,7 @@
                     <asp:Repeater ID="rptPosts" runat="server" OnItemDataBound="rptPosts_ItemDataBound">
                         <ItemTemplate>
                             <div class="post-card">
-                                <h5><%# Eval("Title") %></h5>
+                                <h5 style="font-size:1.5em;"><%# Eval("Title") %></h5>
                                 <div class="post-content"><%# Eval("Content") %></div>
                                 <div class="post-footer">
                                     <small class="text-muted">By <%# Eval("Author") %> on <%# Eval("Date", "{0:yyyy-MM-dd HH:mm:ss}") %></small>

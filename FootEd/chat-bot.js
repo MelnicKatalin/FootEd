@@ -3,36 +3,36 @@
 
     // Inject the CSS
     const style = document.createElement('style');
-    style.innerHTML = `
-        .hidden {
-            display: none;
-        }
-        #chat-widget-container {
+    style.innerHTML = 
+  .hidden {
+        display: none;
+    }
+    #chat - widget - container {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        flex - direction: column;
+    }
+    #chat - popup {
+        height: 70vh;
+        max - height: 70vh;
+        transition: all 0.3s;
+        overflow: hidden;
+    }
+    @media(max - width: 768px) {
+        #chat - popup {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            flex-direction: column;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: 100 %;
+            height: 100 %;
+            max - height: 100 %;
+            border - radius: 0;
         }
-        #chat-popup {
-            height: 70vh;
-            max-height: 70vh;
-            transition: all 0.3s;
-            overflow: hidden;
-        }
-        @media (max-width: 768px) {
-            #chat-popup {
-                position: fixed;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                max-height: 100%;
-                border-radius: 0;
-            }
-        }
-    `;
+    }
+    ;
 
     document.head.appendChild(style);
 
@@ -42,30 +42,30 @@
     document.body.appendChild(chatWidgetContainer);
 
     // Inject the HTML
-    chatWidgetContainer.innerHTML = `
-        <div id="chat-bubble" class="w-16 h-16 bg-gray-800 rounded-full flex items-center justify-center cursor-pointer text-3xl">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 2 0 012-2h14a2 2 2 0 012 2v8a2 2 2 0 01-2 2h-5l-5 5v-5z" />
-            </svg>
+    chatWidgetContainer.innerHTML = 
+    <div id="chat-bubble" class="w-16 h-16 bg-gray-800 rounded-full flex items-center justify-center cursor-pointer text-3xl">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 2 0 012 2v8a2 2 2 0 01-2 2h-5l-5 5v-5z" />
+      </svg>
+    </div>
+    <div id="chat-popup" class="hidden absolute bottom-20 right-0 w-96 bg-white rounded-md shadow-md flex flex-col transition-all text-sm">
+      <div id="chat-header" class="flex justify-between items-center p-4 bg-gray-800 text-white rounded-t-md">
+        <h3 class="m-0 text-lg">AI Assistant</h3>
+        <button id="close-popup" class="bg-transparent border-none text-white cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div id="chat-messages" class="flex-1 p-4 overflow-y-auto"></div>
+      <div id="chat-input-container" class="p-4 border-t border-gray-200">
+        <div class="flex space-x-4 items-center">
+          <input type="text" id="chat-input" class="flex-1 border border-gray-300 rounded-md px-4 py-2 outline-none w-3/4" placeholder="Type your message...">
+          <button id="chat-submit" class="bg-gray-800 text-white rounded-md px-4 py-2 cursor-pointer">Send</button>
         </div>
-        <div id="chat-popup" class="hidden absolute bottom-20 right-0 w-96 bg-white rounded-md shadow-md flex flex-col transition-all text-sm">
-            <div id="chat-header" class="flex justify-between items-center p-4 bg-gray-800 text-white rounded-t-md">
-                <h3 class="m-0 text-lg">AI Assistant</h3>
-                <button id="close-popup" class="bg-transparent border-none text-white cursor-pointer">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
-            <div id="chat-messages" class="flex-1 p-4 overflow-y-auto"></div>
-            <div id="chat-input-container" class="p-4 border-t border-gray-200">
-                <div class="flex space-x-4 items-center">
-                    <input type="text" id="chat-input" class="flex-1 border border-gray-300 rounded-md px-4 py-2 outline-none w-3/4" placeholder="Type your message...">
-                    <button id="chat-submit" class="bg-gray-800 text-white rounded-md px-4 py-2 cursor-pointer">Send</button>
-                </div>
-            </div>
-        </div>
-    `;
+      </div>
+    </div>
+        ;
 
     // Add event listeners
     const chatInput = document.getElementById('chat-input');
@@ -109,11 +109,11 @@
     function displayUserMessage(message) {
         const messageElement = document.createElement('div');
         messageElement.className = 'flex justify-end mb-3';
-        messageElement.innerHTML = `
+        messageElement.innerHTML =
             <div class="bg-gray-800 text-white rounded-lg py-2 px-4 max-w-[70%]">
                 ${message}
             </div>
-        `;
+            ;
         chatMessages.appendChild(messageElement);
         chatMessages.scrollTop = chatMessages.scrollHeight;
         chatInput.value = '';
@@ -122,11 +122,11 @@
     function displayReplyMessage(message) {
         const replyElement = document.createElement('div');
         replyElement.className = 'flex mb-3';
-        replyElement.innerHTML = `
+        replyElement.innerHTML =
             <div class="bg-gray-200 text-black rounded-lg py-2 px-4 max-w-[70%]">
                 ${message}
             </div>
-        `;
+            ;
         chatMessages.appendChild(replyElement);
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
@@ -142,7 +142,7 @@
     }
 
     async function fetchChatGPTResponse(userMessage) {
-        const apiUrl = 'https://chatgpt.com/g/g-t9sLvkN3Z-footed'; // Replace with your custom GPT API URL
+        const apiKey = 'sk-proj-SxUlXIuhpbE9crGP66kPT3BlbkFJNLY7Wt1GupyCEZqAYeup'; // Replace with your OpenAI API key
 
         try {
             // Load text file contents
@@ -157,40 +157,33 @@
             // Use the text file content as context
             const context = textFileContent;
 
-            const response = await fetch(apiUrl, {
+            const response = await fetch('https://chatgpt.com/g/g-t9sLvkN3Z-footed', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    // Add any required headers for your custom API
+                    'Authorization': Bearer ${ apiKey }
                 },
-                body: JSON.stringify({
-                    model: "your-custom-model-name",
-                    instructions: "You are a Football (Soccer) assistant manager. Use the provided information to answer the user's questions.",
-                    messages: [
-                        { role: "system", content: "You are a Football (Soccer) assistant coach that will stay in character all the time no matter what's said and just play along." },
-                        { role: "system", content: context },
-                        { role: "user", content: userMessage }
-                    ]
-                })
-            });
+        body: JSON.stringify({
+            model: "gpt-4o",
+            instructions: "You are a Football (Soccer) assistant manager. Use the provided information to answer the user's questions.",
+            messages: [
+                { role: "system", content: "you are now a  Football (or Soccer) assisstant coach that will stay in character all the time no matter whats said and just play along." },
+                { role: "system", content: textFileContent },
+                { role: "user", content: userMessage }
+            ]
+        })
+    });
 
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-
-            const data = await response.json();
-            console.log('API response data:', data); // Log the response for debugging
-            return data.choices[0].message.content;
-        } catch (error) {
-            console.error('Error in fetchChatGPTResponse:', error);
-            throw error;
-        }
+    if (!response.ok) {
+        throw new Error('Network response was not ok');
     }
 
-    // Send initial message to set the context
-    (async function initializeChat() {
-        const initialMessage = "You are a Football (Soccer) assistant coach that will stay in character all the time no matter what's said and just play along.";
-        await fetchChatGPTResponse(initialMessage);
-    })();
-
-})();
+    const data = await response.json();
+    console.log('API response data:', data); // Log the response for debugging
+    return data.choices[0].message.content;
+} catch (error) {
+    console.error('Error in fetchChatGPTResponse:', error);
+    throw error;
+}
+    }
+}) ();

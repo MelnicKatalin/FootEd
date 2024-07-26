@@ -81,26 +81,7 @@
                         </div>
                      </div>
                   </div>
-                  <div class="row">
-                     <div class="col-md-4">
-                        <label>State</label>
-                        <div class="form-group">
-                           <asp:TextBox CssClass="form-control" ID="TextBox9" runat="server" placeholder="Country" ReadOnly="True"></asp:TextBox>
-                        </div>
-                     </div>
-                     <div class="col-md-4">
-                        <label>City</label>
-                        <div class="form-group">
-                           <asp:TextBox CssClass="form-control" ID="TextBox10" runat="server" placeholder="City" ReadOnly="True"></asp:TextBox>
-                        </div>
-                     </div>
-                     <div class="col-md-4">
-                        <label>Pin Code</label>
-                        <div class="form-group">
-                           <asp:TextBox CssClass="form-control" ID="TextBox11" runat="server" placeholder="Pin Code" ReadOnly="True"></asp:TextBox>
-                        </div>
-                     </div>
-                  </div>
+                  \
                   
                   <div class="row">
                      <div class="col-8 mx-auto">
@@ -137,8 +118,7 @@
                                 <asp:BoundField DataField="account_status" HeaderText="Account Status" SortExpression="account_status" />
                                 <asp:BoundField DataField="contact_no" HeaderText="Number" SortExpression="contact_no" />
                                 <asp:BoundField DataField="email" HeaderText="Email" SortExpression="email" />
-                                <asp:BoundField DataField="country" HeaderText="Country" SortExpression="country" />
-                                <asp:BoundField DataField="city" HeaderText="City" SortExpression="city" />
+                                
                             </Columns>
                          </asp:GridView>
                      </div>
