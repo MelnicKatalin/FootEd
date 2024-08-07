@@ -142,7 +142,7 @@
     }
 
     async function fetchChatGPTResponse(userMessage) {
-        const apiKey = 'sk-proj-SxUlXIuhpbE9crGP66kPT3BlbkFJNLY7Wt1GupyCEZqAYeup'; // Replace with your OpenAI API key
+        const apiKey = ''; // Replace with your OpenAI API key
 
         try {
             // Load text file contents
